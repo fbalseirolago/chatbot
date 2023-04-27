@@ -8,13 +8,11 @@ GraphNode::GraphNode(int id)
 
 GraphNode::~GraphNode()
 {
-    //// STUDENT CODE
-    ////
-
-    delete _chatBot; 
-
-    ////
-    //// EOF STUDENT CODE
+    /* 
+    * Invalidate pointer only -> deletion of chatbot will be done where
+    * it is created; chatlogic.
+    */
+    _chatBot = nullptr;
 }
 
 void GraphNode::AddToken(std::string token)
