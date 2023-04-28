@@ -45,7 +45,6 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
-
 ChatBot::ChatBot(const ChatBot &source) // Copy Operator
 {
     std::cout << "ChatBot Constructor with Copy" << std::endl;
@@ -56,6 +55,7 @@ ChatBot::ChatBot(const ChatBot &source) // Copy Operator
 
     // Point to the same addresses as the source
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
     _rootNode = source._rootNode;
     _currentNode = source._currentNode;
 }
@@ -76,6 +76,7 @@ ChatBot& ChatBot::operator=(const ChatBot &source) // Copy Assignment Operator
     *_image = *source._image;
 
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
     _rootNode = source._rootNode;
     _currentNode = source._currentNode;
 
@@ -89,6 +90,7 @@ ChatBot::ChatBot(ChatBot &&source) // Move operator
     // Move the pointer assignment from the source to the destiny
     _image = source._image;
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
     _rootNode = source._rootNode;
     _currentNode = source._currentNode;
 
@@ -114,6 +116,7 @@ ChatBot& ChatBot::operator=(ChatBot &&source) // Move Assignment Operator
     // Assign the contents of the source to the destiny
     _image = source._image;
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
     _rootNode = source._rootNode;
     _currentNode = source._currentNode;
 
@@ -125,8 +128,6 @@ ChatBot& ChatBot::operator=(ChatBot &&source) // Move Assignment Operator
 
     return *this;
 }
-
-
 ////
 //// EOF STUDENT CODE
 
